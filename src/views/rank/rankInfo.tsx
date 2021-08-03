@@ -1,9 +1,9 @@
 // import React, { Component } from "react"
 import React, { useState, useEffect } from "react"
-import { Link } from "react-router-dom"
 import { match } from "react-router-dom"
 import $http from "../../axios"
 import "./rankInfo.scss"
+import { History } from "history"
 interface Data {
 	info: {
 		rankname: string
@@ -13,7 +13,7 @@ interface Data {
 		list: Array<[]>
 	}
 }
-function RankInfo(props: { match: match<{ id: string }> }) {
+function RankInfo(props: { match: match<{ id: string }>; history: History }) {
 	const [data, setData] = useState<Data>({ info: { rankname: "", banner7url: "" }, songs: { list: [] } })
 	const { id } = props.match.params
 	useEffect(() => {
@@ -28,9 +28,7 @@ function RankInfo(props: { match: match<{ id: string }> }) {
 					<img src={data.info.banner7url.replace("{size}", "400")} alt="" />
 				</div>
 				<div className="title_wrap">
-					<Link to="/">
-						<div className="title_icon"></div>
-					</Link>
+					<div className="title_icon" onClick={() => props.history.goBack()}></div>
 					<div className="title">{data.info.rankname}</div>
 				</div>
 			</div>

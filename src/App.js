@@ -1,11 +1,7 @@
-import React, { Component } from "react"
+import React from "react"
 import Header from "./component/header/header"
 import Player from "./component/player/player"
 
-export default class App extends Component {
-	render() {
-		return (
-			<><Header /> {this.props.children} <Player /></>
-		)
-	}
+export default (props) => {
+	return <><Header /> {props.children} <Player direction={['left', 'right', 'down'][parseInt(Math.random() * 3)]} /></>
 }

@@ -1,3 +1,4 @@
+@import "../../style/variable";
 .player {
 	position: absolute;
 	width: 100%;
@@ -10,30 +11,74 @@
 		background-color: rgba(0, 0, 0, 0.7);
 		border-radius: 50%;
 		position: absolute;
-		transform: rotate(90deg);
-		bottom: 0px;
-		right: 10px;
-		animation: move 1.5s linear infinite alternate;
 		transition: 1.5s;
-		&_act {
+		&.left {
+			animation: move 1.5s linear infinite alternate;
 			transform: rotate(270deg);
+			bottom: 0px;
+			left: 10px;
+			@keyframes move {
+				0% {
+				}
+				100% {
+					left: 50px;
+				}
+			}
+		}
+		&.right {
+			animation: move 1.5s linear infinite alternate;
+			transform: rotate(90deg);
+			bottom: 0px;
+			right: 10px;
+			@keyframes move {
+				0% {
+				}
+				100% {
+					right: 30px;
+				}
+			}
+		}
+		&.down {
+			animation: move 1.5s linear infinite alternate;
+			bottom: 0px;
+			left: 10px;
+			@keyframes move {
+				0% {
+				}
+				100% {
+					bottom: 20px;
+				}
+			}
+		}
+		&_act {
+			&.left {
+				transform: rotate(90deg);
+			}
+			&.right {
+				transform: rotate(270deg);
+			}
+			&.down {
+				transform: rotate(0deg);
+			}
 		}
 	}
-	@keyframes move {
-		0% {
-		}
-		100% {
-			right: 30px;
-		}
-	}
+
 	.player_panel {
 		position: fixed;
-		right: 0;
 		bottom: 0;
+		&.left {
+			left: 0;
+		}
+		&.right {
+			right: 0;
+		}
+		&.down {
+			bottom: 0;
+		}
 		width: 100%;
 		height: 64px;
-		background: rgba(0, 0, 0, 0.8);
-		padding: 7px;
+		background: $headerBg;
+		padding: 8px 6px;
 		z-index: 12;
 		display: flex;
 		justify-content: space-between;
@@ -47,21 +92,44 @@
 		.player_tool {
 			display: flex;
 		}
-		.player_play {
-			width: 40px;
-			height: 40px;
-			background: url("../../static/images/play_icon.png") no-repeat;
+		.players_play {
+			width: 28px;
+			height: 28px;
+			background: url("../../static/images/play_play.png") no-repeat;
+			background-size: 100%;
+			margin-right: 20px;
+		}
+		.players_paused {
+			width: 28px;
+			height: 28px;
+			background: url("../../static/images/play_pause.png") no-repeat;
 			background-size: 100%;
 			margin-right: 20px;
 		}
 		.player_next {
-			width: 40px;
-			height: 40px;
-			background: url("../../static/images/next_icon.png") no-repeat;
+			width: 28px;
+			height: 28px;
+			margin-right: 14px;
+			background: url("../../static/images/play_next.png") no-repeat;
+			background-size: 100%;
+		}
+		.player_last {
+			width: 28px;
+			height: 28px;
+			margin-right: 20px;
+			background: url("../../static/images/play_prev.png") no-repeat;
 			background-size: 100%;
 		}
 	}
 	.act {
-		right: 100%;
+		&.left {
+			left: 100%;
+		}
+		&.right {
+			right: 100%;
+		}
+		&.down {
+			bottom: -64px;
+		}
 	}
 }

@@ -1,16 +1,19 @@
+@import "../../style/variable";
 .singerList {
+	height: calc(100% - 50px);
+	background: $bgColor;
+	color: $fontColor;
+	overflow: auto;
 	li {
 		height: 80px;
 		width: 100%;
 		display: flex;
-		border-bottom: 1px solid #efefef;
 		padding-left: 10px;
 		align-items: center;
 		justify-content: space-between;
 		.rank_left {
 			display: flex;
 			align-items: center;
-			color: #000;
 			font-size: 16px;
 			img {
 				height: 60px;

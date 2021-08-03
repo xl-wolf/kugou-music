@@ -17,17 +17,15 @@ export default class SingerList extends Component<{ match: match<{ id: string }>
 		return (
 			<div className="singerList">
 				<>
-					{this.state.data.singers.list.info.map((item: any) => {
-						return (
-							<li key={item.singerid}>
-								<div className="rank_left">
-									<img src={item.imgurl.replace("{size}", "400")} alt="" />
-									<div>{item.singername}</div>
-								</div>
-								<div className="rank_right"></div>
-							</li>
-						)
-					})}
+					{this.state.data.singers.list.info.map((item: any) => (
+						<li key={item.singerid}>
+							<div className="rank_left">
+								<img src={item.imgurl.replace("{size}", "400")} alt="" />
+								<div>{item.singername}</div>
+							</div>
+							<div className="rank_right"></div>
+						</li>
+					))}
 				</>
 			</div>
 		)

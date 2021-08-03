@@ -1,3 +1,4 @@
+@import "../../style/variable";
 .header {
 	height: 50px;
 	width: 100%;
@@ -5,7 +6,7 @@
 	align-items: center;
 	justify-content: space-between;
 	padding: 0 14px;
-	background-color: #2ca2f9;
+	background-color: $headerBg;
 	.logo {
 		height: 24px;
 		img {

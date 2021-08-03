@@ -41,11 +41,8 @@ export default function Search() {
 	const searchData = (value: string) => {
 		$http.get("/sproxy/search/song?format=json&page=1&pagesiez=20&showtype=1", { params: { keyword: value } }).then(data => {
 			console.log(data)
-			if (data.status === 1) {
-				setResult(data.data.info)
-			} else {
-				setResult(lists)
-			}
+			if (data.status !== 1) return console.error("接口查询失败")
+			setResult(data.data.info)
 		})
 	}
 	return (
@@ -53,20 +50,9 @@ export default function Search() {
 			<div className="search_top">
 				<div className="search_box">
 					<div className="icon"></div>
-					<input
-						type="text"
-						value={inputValue}
-						onChange={e => {
-							setValue(e.target.value)
-						}}
-					/>
+					<input type="text" value={inputValue} onChange={e => setValue(e.target.value)} />
 				</div>
-				<div
-					className="btn_search"
-					onClick={() => {
-						searchData(inputValue)
-					}}
-				>
+				<div className="btn_search" onClick={() => searchData(inputValue)}>
 					搜 索
 				</div>
 			</div>
@@ -74,14 +60,12 @@ export default function Search() {
 				<div className="title">热门搜索</div>
 				<div className="search_list">
 					<ul>
-						{resultList.map((item: any, index: number) => {
-							return (
-								<li key={item.album_audio_id} onClick={() => setValue(item.filename)}>
-									<div className="name">{item.filename}</div>
-									<div className="arrow"></div>
-								</li>
-							)
-						})}
+						{resultList.map((item: any) => (
+							<li key={item.album_audio_id} onClick={() => setValue(item.filename)}>
+								<div className="name">{item.filename}</div>
+								<div className="arrow"></div>
+							</li>
+						))}
 					</ul>
 				</div>
 			</div>

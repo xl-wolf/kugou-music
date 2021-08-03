@@ -1,11 +1,27 @@
+@import "../../style/variable";
 .tabs {
 	display: flex;
 	flex-direction: column;
 	height: calc(100% - 50px);
+	.am-tabs-default-bar-content {
+		background: $bgColor;
+		color: antiquewhite;
+	}
 	.am-tabs-tab-bar-wrap {
 		width: 100%;
 	}
 	.am-wingblank.am-wingblank-lg {
 		margin: 0;
+	}
+	.am-tabs-default-bar-tab-active {
+		color: $themeColor;
+		font-style: italic;
+		font-weight: bolder;
+	}
+	.am-tabs-default-bar-underline {
+		border-color: $themeColor;
+	}
+	.am-carousel-wrap {
+		margin-bottom: 10px;
 	}
 }

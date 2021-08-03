@@ -1,21 +1,29 @@
 import React, { Component } from "react"
 import "./player.scss"
-export default class player extends Component {
-	readonly state = {
-		palyerFace: require("../../static/images/default.png"),
-		isAct: false
+import playerFace from "../../static/images/default.png"
+
+interface IProps {
+	direction: string
+}
+export default class player extends Component<IProps> {
+	state = {
+		isAct: true,
+		isPaused: true
 	}
 	render() {
+		const { isAct, isPaused } = this.state
+		const { direction } = this.props
 		return (
 			<div className="player">
-				<div className={this.state.isAct ? "player_control player_control_act" : "player_control"} onClick={this.play}></div>
-				<div className={this.state.isAct ? "player_panel act" : "player_panel"}>
+				<div className={isAct ? `player_control player_control_act ${direction}` : `player_control ${direction}`} onClick={this.play}></div>
+				<div className={isAct ? `player_panel act ${direction}` : `player_panel ${direction}`}>
 					<div className="song_face">
-						<img src={this.state.palyerFace} alt="" />
+						<img src={playerFace} alt="" />
 					</div>
 					<div className="player_tool">
-						<div className="player_play"></div>
-						<div className="player_next"></div>
+						<div className="player_last" onClick={this.lastSong}></div>
+						<div className={`${isPaused ? "players_paused" : "players_play"}`} onClick={this.startOrStopAudio}></div>
+						<div className="player_next" onClick={this.nextSong}></div>
 					</div>
 				</div>
 			</div>
@@ -25,5 +33,16 @@ export default class player extends Component {
 		this.setState({
 			isAct: !this.state.isAct
 		})
+	}
+	startOrStopAudio = () => {
+		this.setState({
+			isPaused: !this.state.isPaused
+		})
+	}
+	nextSong = () => {
+		console.log("nextSong")
+	}
+	lastSong = () => {
+		console.log("lastSong")
 	}
 }
