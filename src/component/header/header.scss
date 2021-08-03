@@ -1,0 +1,21 @@
+.header {
+	height: 50px;
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0 14px;
+	background-color: #2ca2f9;
+	.logo {
+		height: 24px;
+		img {
+			height: 100%;
+		}
+	}
+	.search {
+		width: 24px;
+		height: 24px;
+		background: url("../../static/images/search.png") no-repeat;
+		background-size: contain;
+	}
+}

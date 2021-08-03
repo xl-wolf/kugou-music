@@ -1,0 +1,11 @@
+.tabs {
+	display: flex;
+	flex-direction: column;
+	height: calc(100% - 50px);
+	.am-tabs-tab-bar-wrap {
+		width: 100%;
+	}
+	.am-wingblank.am-wingblank-lg {
+		margin: 0;
+	}
+}

@@ -1,0 +1,37 @@
+.hot_list {
+	li {
+		height: 100px;
+		border-bottom: 1px solid #efefef;
+		a {
+			display: flex;
+			height: 100%;
+			align-items: center;
+			color: #000;
+		}
+		.left {
+			img {
+				width: 80px;
+				padding: 10px;
+				box-sizing: content-box;
+			}
+		}
+		.right {
+			.listen_num {
+				font-size: 0;
+				.listen_icon {
+					display: inline-block;
+					width: 20px;
+					height: 20px;
+					background: url("../../static/images/icon_music.png");
+					margin-right: 10px;
+					margin-top: 5px;
+				}
+				.listen_count {
+					font-size: 12px;
+					color: #737070;
+					vertical-align: bottom;
+				}
+			}
+		}
+	}
+}

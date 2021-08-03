@@ -1,0 +1,29 @@
+import React, { Component } from "react"
+import "./player.scss"
+export default class player extends Component {
+	readonly state = {
+		palyerFace: require("../../static/images/default.png"),
+		isAct: false
+	}
+	render() {
+		return (
+			<div className="player">
+				<div className={this.state.isAct ? "player_control player_control_act" : "player_control"} onClick={this.play}></div>
+				<div className={this.state.isAct ? "player_panel act" : "player_panel"}>
+					<div className="song_face">
+						<img src={this.state.palyerFace} alt="" />
+					</div>
+					<div className="player_tool">
+						<div className="player_play"></div>
+						<div className="player_next"></div>
+					</div>
+				</div>
+			</div>
+		)
+	}
+	play = () => {
+		this.setState({
+			isAct: !this.state.isAct
+		})
+	}
+}
